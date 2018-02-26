@@ -1,0 +1,20 @@
+set expand-tilde on
+set bell-style visible
+
+"\C-n": menu-complete
+
+set keymap emacs
+"\ea": vi-editing-mode
+"\e(": "\ef\eb(\ef)"
+"\e{": "\ef\eb{\ef}"
+"\e[": "\ef\eb[\ef]"
+"\e\'": "\ef\eb\'\ef\'"
+"\e\"": "\ef\eb\"\ef\""
+"\el": "\C-e|less"
+"\em": "\C-e|more"
+
+set keymap vi-command
+"\ea": emacs-editing-mode
+
+set keymap vi-insert
+"\ea": emacs-editing-mode
