@@ -1,0 +1,652 @@
+* interface-tweaks
+** miscellaneous
+   #+BEGIN_SRC emacs-lisp
+     (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+     (setq ring-bell-function 'ignore)
+     (setq ns-right-alternate-modifier nil)
+     (set-default-font "Hack 12")
+     (delete-selection-mode t)
+     (setq-default tab-width 4)
+     (setq-default indent-tabs-mode nil)
+     (fset 'yes-or-no-p 'y-or-n-p)
+     (global-visual-line-mode t)
+     (electric-indent-mode t)
+     (electric-pair-mode t)
+   #+END_SRC
+** language
+   #+BEGIN_SRC emacs-lisp
+     (set-language-environment "UTF-8")
+     (setenv "LANG" "en_US.UTF-8")
+     (setenv "LC_ALL" "en_US.UTF-8")
+     (setenv "LC_CTYPE" "UTF-8")
+   #+END_SRC
+** linum
+   #+BEGIN_SRC emacs-lisp
+     (global-linum-mode 1)
+     (setq linum-format "%4d \u2502 ")
+     (put 'narrow-to-region 'disabled nil)
+   #+END_SRC
+** fullscreen
+   #+BEGIN_SRC emacs-lisp
+     (toggle-frame-maximized)
+     (when window-system
+       (menu-bar-mode t))
+   #+END_SRC
+** mouse
+   #+BEGIN_SRC emacs-lisp
+     (unless window-system
+       (require 'mouse)
+       (xterm-mouse-mode t)
+       (global-set-key [mouse-4] (lambda ()
+                                   (interactive)
+                                   (scroll-down 1)))
+       (global-set-key [mouse-5] (lambda ()
+                                   (interactive)
+                                   (scroll-up 1)))
+       (setq mouse-sel-mode t))
+   #+END_SRC
+** line-above
+   #+begin_src emacs-lisp
+     (defun line-above ()
+       "Pastes line above"
+       (interactive)
+       (move-end-of-line 0)
+       (newline-and-indent))
+     (global-set-key (kbd "M-RET") 'line-above)    
+   #+END_SRC
+** line-below
+   #+BEGIN_SRC emacs-lisp
+     (defun line-below ()
+       "Pastes line below"
+       (interactive)
+       (move-end-of-line nil)
+       (newline-and-indent))
+     (global-set-key (kbd "C-<return>") 'line-below)    
+   #+END_SRC
+** cut-line-or-region
+   #+BEGIN_SRC emacs-lisp
+     (defun cut-line-or-region ()
+       ""
+       (interactive)
+       (if (region-active-p)
+           (kill-region (region-beginning)
+                        (region-end))
+         (kill-region (line-beginning-position)
+                      (line-beginning-position 2))))
+     (global-set-key [remap kill-region] 'cut-line-or-region)    
+   #+END_SRC
+** copy-line-or-region
+   #+BEGIN_SRC emacs-lisp
+     (defun copy-line-or-region ()
+       ""
+       (interactive)
+       (if (region-active-p)
+           (kill-ring-save (region-beginning)
+                           (region-end))
+         (kill-ring-save (line-beginning-position)
+                         (line-beginning-position 2))))
+     (global-set-key [remap kill-ring-save] 'copy-line-or-region)    
+   #+END_SRC
+** desktop-save
+   #+BEGIN_SRC emacs-lisp
+     (desktop-save-mode 1)
+   #+END_SRC
+** window resize
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+     (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+     (global-set-key (kbd "S-C-<down>") 'shrink-window)
+     (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+   #+END_SRC
+* package-archives
+  #+BEGIN_SRC emacs-lisp
+    (require 'package)
+    (setq package-archives
+          '(("melpa" . "https://melpa.org/packages/")
+            ("melpa-stable" . "https://stable.melpa.org/packages/")
+            ("org" . "http://orgmode.org/elpa/")
+            ("gnu" . "https://elpa.gnu.org/packages/") ; not mandatory
+            ))
+    (when (< emacs-major-version 24)
+      (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+    (package-initialize)
+  #+END_SRC
+* use-package
+  #+BEGIN_SRC emacs-lisp
+    (if (not (package-installed-p 'use-package))
+        (progn
+          (package-refresh-contents)
+          (package-install 'use-package)))
+    (require 'use-package)
+    (setq use-package-always-ensure t)
+  #+END_SRC
+* packages
+  Packages installed with use-package
+** try
+   #+BEGIN_SRC emacs-lisp
+     (use-package try)
+   #+END_SRC
+** dash
+   #+BEGIN_SRC emacs-lisp
+     (use-package dash)
+   #+END_SRC
+** s
+   #+BEGIN_SRC emacs-lisp
+     (use-package s)
+   #+END_SRC
+** f
+   #+BEGIN_SRC emacs-lisp
+     (use-package f)
+   #+END_SRC
+** exec-path-from-shell
+   #+BEGIN_SRC emacs-lisp
+     (use-package exec-path-from-shell
+       :config
+       (when (memq window-system '(mac ns))
+         (exec-path-from-shell-initialize)))
+   #+END_SRC
+
+** COMMENT better-defaults
+   #+BEGIN_SRC emacs-lisp
+     (use-package better-defaults)
+   #+END_SRC
+** ibuffer
+   #+BEGIN_SRC emacs-lisp
+     (defalias 'list-buffers 'ibuffer)
+   #+END_SRC
+** counsel
+	#+BEGIN_SRC emacs-lisp
+      (use-package counsel
+        :bind
+        (("M-y" . counsel-yank-pop)
+         :map ivy-minibuffer-map
+         ("M-y" . ivy-next-line)))
+	#+END_SRC
+** ivy
+   #+BEGIN_SRC emacs-lisp
+     (use-package ivy
+       :diminish (ivy-mode)
+       :bind ("C-x b" . ivy-switch-buffer)
+       :config
+       (ivy-mode 1)
+       (setq ivy-use-virtual-buffers t)
+       (setq ivy-count-format "%d/%d ")
+       (setq ivy-display-style 'fancy)
+       ;; Enable magit completion
+       (setq magit-completing-read-function 'ivy-completing-read))
+   #+END_SRC
+** swiper
+   #+BEGIN_SRC emacs-lisp
+     (use-package swiper
+       :bind
+       (("C-s" . swiper)
+        ("C-r" . swiper)
+        ("C-c C-r" . ivy-resume)
+        ("M-x" . counsel-M-x)
+        ("C-x C-f" . counsel-find-file))
+       :config
+       (progn
+         (ivy-mode 1)
+         (setq ivy-use-virtual-buffers t)
+         (setq ivy-display-style 'fancy)
+         (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
+   #+END_SRC
+** avy
+   #+BEGIN_SRC emacs-lisp
+     (use-package avy
+       :bind ("C-:" . avy-goto-char))
+   #+END_SRC
+** htmlize
+   #+BEGIN_SRC emacs-lisp
+     (use-package htmlize)
+   #+END_SRC
+** web-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package web-mode
+       :mode "\\.html?\\'")
+   #+END_SRC
+** css-eldoc
+   #+BEGIN_SRC emacs-lisp
+     (use-package css-eldoc)
+   #+END_SRC
+** emmet-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package emmet-mode
+       :hook (html-mode web-mode css-mode))
+   #+END_SRC
+** COMMENT elpy
+   #+BEGIN_SRC emacs-lisp
+     (use-package elpy
+       :config
+       (elpy-enable)
+       (elpy-use-cpython)
+       (setq python-shell-interpreter "python3")
+       (setq elpy-rpc-python-command "python3")
+       (setq elpy-rpc-backend "jedi"))
+   #+END_SRC
+** flycheck
+   #+BEGIN_SRC emacs-lisp
+     (use-package flycheck
+       :hook ((json-mode . flycheck-mode)
+              (python-mode . flycheck-mode)
+              (js-mode . flycheck-mode)
+              (shell-script-mode . flycheck-mode)
+              ;;(emacs-lisp-mode . flycheck-mode)
+              ;;(common-lisp-mode . flycheck-mode)
+              ))
+   #+END_SRC
+** slime
+   #+BEGIN_SRC emacs-lisp
+     (use-package slime
+       :init
+       (progn
+         (load (expand-file-name "~/quicklisp/slime-helper.el"))
+         (setq inferior-lisp-program "/usr/local/bin/sbcl"))
+       :config
+       (progn
+         (add-hook 'slime-mode-hook 'slime-company-maybe-enable)
+         (add-hook 'slime-repl-mode-hook 'slime-company-maybe-enable)
+         (setq slime-contribs '(slime-fancy))
+         ;;(eval-after-load "company"
+         ;;  '(progn
+         ;;     (slime-setup '(slime-fancy slime-company))
+         ;;     (add-to-list 'company-backends 'slime-company-backend)))
+         ))
+   #+END_SRC
+** js2-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package js2-mode
+       :mode "\\.js\\'")
+   #+END_SRC
+
+** js-comint
+   #+BEGIN_SRC emacs-lisp
+     (use-package js-comint)
+   #+END_SRC
+** jsx-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package jsx-mode
+       :mode "\\.jsx\\'")
+   #+END_SRC
+** paredit
+   #+BEGIN_SRC emacs-lisp
+     (use-package paredit
+       :config
+       (progn
+         (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+         (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+         (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+         (add-hook 'm-mode-hook             #'enable-paredit-mode)
+         (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+         (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+         (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+
+         (require 'eldoc)
+         (eldoc-add-command
+          'paredit-backward-delete
+          'paredit-close-round)
+
+         (add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
+         (defun override-slime-repl-bindings-with-paredit ()
+           (define-key slime-repl-mode-map
+             (read-kbd-macro paredit-backward-delete-key) nil))
+         (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)))
+   #+END_SRC
+** paredit-menu
+   #+BEGIN_SRC emacs-lisp
+     (use-package paredit-menu)
+   #+END_SRC
+** jedi-core
+   #+BEGIN_SRC emacs-lisp
+     (use-package jedi-core)
+   #+END_SRC
+** company
+   #+BEGIN_SRC emacs-lisp
+     (use-package company
+       :config
+       (progn
+         (add-hook 'after-init-hook 'global-company-mode)
+         (company-quickhelp-mode 1)
+         (define-key company-active-map (kbd "\C-n") 'company-select-next)
+         (define-key company-active-map (kbd "\C-p") 'company-select-previous)
+         (define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
+         (define-key company-active-map (kbd "<tab>") 'company-complete)
+         (define-key company-active-map (kbd "\C-v") 'company-show-location)
+         (define-key company-active-map (kbd "\C-g") '(lambda ()
+                                                        (interactive)
+                                                        (company-abort)))
+         (setq company-tooltip-limit 20)                      ; bigger popup window
+         (setq company-idle-delay .1)                         ; decrease delay before autocompletion popup shows
+         (setq company-echo-delay 0)                          ; remove annoying blinking
+         (setq company-minimum-prefix-length 1)))
+   #+END_SRC
+** pos-tip
+   #+BEGIN_SRC emacs-lisp
+     (use-package pos-tip)
+   #+END_SRC
+** company-shell
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-shell
+       :config
+       (add-to-list 'company-backends 'company-shell))
+   #+END_SRC
+** company-web
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-web
+       :config
+       (add-hook 'web-mode-hook
+                 (lambda ()
+                   (set (make-local-variable 'company-backends) '(company-web-html))
+                   (company-mode t))))
+   #+END_SRC
+** company-quickhelp
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-quickhelp)
+   #+END_SRC
+** company-try-hard
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-try-hard)
+   #+END_SRC
+** company-jedi
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-jedi
+       :config
+       (add-hook 'python-mode-hook
+                 (lambda ()
+                   (add-to-list 'company-backends 'company-jedi))))
+   #+END_SRC
+** company-go
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-go
+       :config
+       (progn
+         (defun go-mode-setup ()
+           (go-eldoc-setup)
+           (setq gofmt-command "goimports")
+           (add-hook 'before-save-hook 'gofmt-before-save)
+           (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
+           (local-set-key (kbd "C-c i") 'go-goto-imports)
+           (set (make-local-variable 'company-backends) '(company-go)))
+         (add-hook 'go-mode-hook 'go-mode-setup)))
+   #+END_SRC
+** company-tern
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-tern
+       :hook (js2-mode . tern-mode)
+       :config
+       (eval-after-load "company"
+         '(progn
+            (add-to-list 'company-backends 'company-tern))))
+   #+END_SRC
+** slime-company
+   #+BEGIN_SRC emacs-lisp
+     (use-package slime-company)
+   #+END_SRC
+** cl
+   #+BEGIN_SRC emacs-lisp
+     (use-package cl)
+   #+END_SRC
+** go-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package go-mode)
+   #+END_SRC
+** go-eldoc
+   #+BEGIN_SRC emacs-lisp
+     (use-package go-eldoc)
+   #+END_SRC
+** irony
+   #+BEGIN_SRC emacs-lisp
+     (use-package irony
+       :config
+       (progn
+         (add-hook 'c++-mode-hook 'irony-mode)
+         (add-hook 'c-mode-hook 'irony-mode)
+         (add-hook 'objc-mode-hook 'irony-mode)
+
+         (defun my-irony-mode-hook ()
+           (define-key irony-mode-map [remap completion-at-point]
+             'irony-completion-at-point-async)
+           (define-key irony-mode-map [remap complete-symbol]
+             'irony-completion-at-point-async))
+    
+         (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+         (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+         (add-hook 'irony-mode-hook 'irony-eldoc)))
+   #+END_SRC
+** company-irony
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-irony
+       :config
+       (progn
+         (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+         (setq company-backends (delete 'company-semantic company-backends))
+
+         (eval-after-load "company"
+           '(progn
+              ;;(add-to-list 'company-c-headers-path-system "/usr/local/include/c++/6.1.0")
+              (add-to-list 'company-backends '(company-irony-c-headers
+                                               company-irony))))
+
+         (setq company-idle-delay 0)
+         (define-key c-mode-map [(C-tab)] 'company-complete)
+         (define-key c++-mode-map [(C-tab)] 'company-complete)))
+   #+END_SRC
+** irony-eldoc
+   #+BEGIN_SRC emacs-lisp
+     (use-package irony-eldoc)
+   #+END_SRC
+** company-irony-c-headers
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-irony-c-headers)
+   #+END_SRC
+** flycheck-irony
+   #+BEGIN_SRC emacs-lisp
+     (use-package flycheck-irony
+       :config (add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+   #+END_SRC
+** expand-region
+   #+BEGIN_SRC emacs-lisp
+     (use-package expand-region
+       :config
+       (global-set-key (kbd "C-=") 'er/expand-region))
+   #+END_SRC
+** browse-kill-ring
+   #+BEGIN_SRC emacs-lisp
+     (use-package browse-kill-ring)
+   #+END_SRC
+** ace-jump-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package ace-jump-mode
+       :config
+       (global-set-key (kbd "C-c SPC") 'ace-jump-mode))
+   #+END_SRC
+** yasnippet
+   #+BEGIN_SRC emacs-lisp
+     (use-package yasnippet
+       :config
+       (yas-global-mode 1))
+   #+END_SRC
+** gnuplot
+   #+BEGIN_SRC emacs-lisp
+     (use-package gnuplot
+       :mode "\\.plt\\'")
+   #+END_SRC
+** ob-mongo
+   #+BEGIN_SRC emacs-lisp
+     (use-package ob-mongo)
+   #+END_SRC
+** ob-http
+   #+BEGIN_SRC emacs-lisp
+     (use-package ob-http)
+   #+END_SRC
+** ob-go
+   #+BEGIN_SRC emacs-lisp
+     (use-package ob-go)
+   #+END_SRC
+** ox-twbs
+   #+BEGIN_SRC emacs-lisp
+     (use-package ox-twbs)
+   #+END_SRC
+** ob-ipython
+   #+BEGIN_SRC emacs-lisp
+     (use-package ob-ipython)
+   #+END_SRC
+** json-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package json-mode)
+   #+END_SRC
+** markdown-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package markdown-mode)
+   #+END_SRC
+** docker
+   #+BEGIN_SRC emacs-lisp
+     (use-package docker)
+   #+END_SRC
+** yaml-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package yaml-mode
+       :mode "\\.yml\\'")
+   #+END_SRC
+** nginx-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package nginx-mode)
+   #+END_SRC
+** nov
+   #+BEGIN_SRC emacs-lisp
+     (use-package nov
+       :mode ("\\.epub\\'" . nov-mode))
+   #+END_SRC
+** shampoo
+   #+BEGIN_SRC emacs-lisp
+     (use-package shampoo)
+   #+END_SRC
+** neotree
+   #+BEGIN_SRC emacs-lisp
+     (use-package neotree)
+   #+END_SRC
+
+** which-key
+   #+BEGIN_SRC emacs-lisp
+     (use-package which-key
+       :config
+       (which-key-mode))
+   #+END_SRC
+** org-bullets
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-bullets
+       :config
+       (add-hook 'org-mode-hook (lambda ()
+                                  (org-bullets-mode 1))))
+   #+END_SRC
+** rainbow-delimiters
+   #+BEGIN_SRC emacs-lisp
+     (use-package rainbow-delimiters
+       :hook (prog-mode . rainbow-delimiters-mode))
+   #+END_SRC
+** paredit-everywhere
+   #+BEGIN_SRC emacs-lisp
+     (use-package paredit-everywhere
+       :hook (prog-mode . paredit-everywhere-mode))
+   #+END_SRC
+** ace-window
+   #+BEGIN_SRC emacs-lisp
+     (use-package ace-window
+       :init
+       (progn
+         (global-set-key [remap other-window] 'ace-window)
+         (custom-set-faces
+          '(aw-leading-char-face
+            ((t (:inherit ace-jump-face-foreground :height 3.0)))))))
+   #+END_SRC
+** cider
+   #+BEGIN_SRC emacs-lisp
+     (use-package cider
+       :pin melpa-stable)
+   #+END_SRC
+** auctex
+   #+BEGIN_SRC emacs-lisp
+     (use-package auctex
+       :defer t)
+   #+END_SRC
+** company-auctex
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-auctex
+       :config (company-auctex-init))
+   #+END_SRC
+** company-math
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-math
+       :config (add-to-list 'company-backends 'company-math-symbols-unicode))
+   #+END_SRC
+** cdlatex
+   #+BEGIN_SRC emacs-lisp
+     (use-package cdlatex
+       :config
+       (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+       (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+       (add-hook 'latex-mode-hook 'turn-on-cdlatex))
+   #+END_SRC
+** impatient-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package impatient-mode)
+   #+END_SRC
+** pdf-tools
+   #+BEGIN_SRC emacs-lisp
+     (use-package pdf-tools
+       :config
+       (progn
+         (custom-set-variables
+          '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
+         (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo")
+         (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))))
+     (pdf-tools-install)
+   #+END_SRC
+** magit
+   #+BEGIN_SRC emacs-lisp
+     (use-package magit
+       :pin melpa-stable
+       :bind ("C-x g" . magit-status)
+       :hook (magit-section-movement . magit-log-maybe-update-blob-buffer))
+   #+END_SRC
+** undo-tree
+   #+BEGIN_SRC emacs-lisp
+     (use-package undo-tree
+       :config
+       (progn
+         (global-undo-tree-mode)
+         (setq undo-tree-auto-save-history t)
+         (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))))
+   #+END_SRC
+** vimrc-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package vimrc-mode
+       :mode "\\.vim\\(rc\\)?\\'")
+   #+END_SRC
+* org-babel
+  Active Babel languages
+  #+BEGIN_SRC emacs-lisp
+    (setq org-confirm-babel-evaluate nil
+          org-src-fontify-natively t
+          org-src-tab-acts-natively t)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((gnuplot . t)
+       (python . t)
+       (ipython . t)
+       (shell . t)
+       (lisp . t)
+       (http . t)
+       (css . t)
+       (go . t)
+       (mongo . t)
+       (js . t)))
+    (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+    (setq org-export-babel-evaluate 'inline-only)
+    (setq org-src-tab-acts-natively t)
+  #+END_SRC
+* theme
+  Current theme
+  #+BEGIN_SRC emacs-lisp
+    (load-theme 'adwaita t)
+  #+END_SRC
