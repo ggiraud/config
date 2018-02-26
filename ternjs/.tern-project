@@ -1,0 +1,12 @@
+{
+	"libs": [
+		"browser",
+		"jquery"
+	],
+	"plugins": {
+		"doc_comment": null,
+		"node": {},
+		"es_modules": {},
+		"phaser": {}
+	}
+}
