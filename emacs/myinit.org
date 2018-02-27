@@ -98,6 +98,11 @@
      (global-set-key (kbd "S-C-<down>") 'shrink-window)
      (global-set-key (kbd "S-C-<up>") 'enlarge-window)
    #+END_SRC
+** COMMENT symlinks
+   Make emacs follow symlinks without prompting
+   #+BEGIN_SRC emacs-lisp
+     (setq vc-follow-symlinks t)
+   #+END_SRC
 * package-archives
   #+BEGIN_SRC emacs-lisp
     (require 'package)

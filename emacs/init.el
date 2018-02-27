@@ -4,6 +4,9 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Make emacs follow symlinks without prompting
+(setq vc-follow-symlinks t)
+
 ;; MYINIT.ORG
 (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 
