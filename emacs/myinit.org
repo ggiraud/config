@@ -683,6 +683,10 @@
      (use-package vimrc-mode
        :mode "\\.vim\\(rc\\)?\\'")
    #+END_SRC
+** plantuml
+   #+BEGIN_SRC emacs-lisp
+     (setq org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.1/libexec/plantuml.jar")
+   #+END_SRC
 * org-babel
   Active Babel languages
   #+BEGIN_SRC emacs-lisp
@@ -700,7 +704,9 @@
        (css . t)
        (go . t)
        (mongo . t)
-       (js . t)))
+       (js . t)
+       (dot . t)
+       (plantuml . t)))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
     (setq org-export-babel-evaluate 'inline-only)
     (setq org-src-tab-acts-natively t)
