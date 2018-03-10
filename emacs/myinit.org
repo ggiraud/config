@@ -687,6 +687,11 @@
    #+BEGIN_SRC emacs-lisp
      (setq org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.1/libexec/plantuml.jar")
    #+END_SRC
+** persp-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package persp-mode
+       :config (persp-mode 1))
+   #+END_SRC
 * org-babel
   Active Babel languages
   #+BEGIN_SRC emacs-lisp
