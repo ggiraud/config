@@ -23,8 +23,6 @@ Plug 'benmills/vimux'
 Plug 'julienr/vim-cellmode'
 Plug 'kovisoft/slimv'
 Plug 'vim-syntastic/syntastic'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'chr4/nginx.vim'
@@ -34,7 +32,11 @@ Plug 'ternjs/tern_for_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'simnalamburt/vim-mundo'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
 call plug#end()
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " An example for a vimrc file.
