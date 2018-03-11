@@ -1,58 +1,40 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required
-Bundle 'gmarik/Vundle.vim'
-
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'rking/ag.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'elzr/vim-json'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'fatih/vim-go'
-Plugin 'mattn/emmet-vim'
-Plugin 'justmao945/vim-clang'
-Plugin 'benmills/vimux'
-Plugin 'julienr/vim-cellmode'
-Plugin 'kovisoft/slimv'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'chrisbra/csv.vim'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'chr4/nginx.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'pangloss/vim-javascript'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'simnalamburt/vim-mundo'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
+call plug#begin('~/.vim/plugged')
+Plug 'easymotion/vim-easymotion'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim'
+Plug 'tpope/vim-commentary'
+Plug 'elzr/vim-json'
+Plug 'davidhalter/jedi-vim'
+Plug 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'fatih/vim-go'
+Plug 'mattn/emmet-vim'
+Plug 'justmao945/vim-clang'
+Plug 'benmills/vimux'
+Plug 'julienr/vim-cellmode'
+Plug 'kovisoft/slimv'
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chrisbra/csv.vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'chr4/nginx.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'pangloss/vim-javascript'
+Plug 'ternjs/tern_for_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'simnalamburt/vim-mundo'
+call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " An example for a vimrc file.
