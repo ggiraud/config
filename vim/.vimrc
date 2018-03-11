@@ -138,33 +138,9 @@ endif
 set number
 colorscheme slate
 
-" " YouCompleteMe setup
-" let g:ycm_python_binary_path = 'python3'
-" "" turn on completion in comments
-" let g:ycm_complete_in_comments=1
-" "" load ycm conf by default
-" let g:ycm_confirm_extra_conf=0
-" "" turn on tag completion
-" let g:ycm_collect_identifiers_from_tags_files=1
-" "" only show completion as a list instead of a sub-window
-" set completeopt-=preview
-" "" start completion from the first character
-" let g:ycm_min_num_of_chars_for_completion=1
-" "" don't cache completion items
-" let g:ycm_cache_omnifunc=0
-" "" complete syntax keywords
-" let g:ycm_seed_identifiers_with_syntax=1
-" let g:ycm_autoclose_preview_window_after_completion=1
-" "" file exclusion
-" let g:ycm_filetype_specific_completion_to_disable = { 'python': 1 }
-" "" debug
-" let g:ycm_server_keep_logfiles = 1
-" let g:ycm_server_log_level = 'debug'
-
-" Powerline setup
-set guifont=Hack-Regular
-" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+" Tmuxline  setup
 set laststatus=2
+let g:tmuxline_powerline_separators = 0
 
 " toggle rainbow_parentheses
 let g:lisp_rainbow=1
@@ -210,9 +186,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
-
-" Airline
-let g:airline_powerline_fonts = 1
 
 " SimpylFold
 let g:SimpylFold_fold_import = 0

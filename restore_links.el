@@ -4,6 +4,7 @@
          ("~/.mongorc.js" . "./mongodb/.mongorc.js")
          ("~/.tern-project" . "./ternjs/.tern-project")
          ("~/.tmux.conf" . "./tmux/.tmux.conf")
+         ("~/.tmux/tmuxline.snapshot" . "./tmux/tmuxline.snapshot")
          ("~/.vimrc" . "./vim/.vimrc")
          ("~/.emacs.d/init.el" . "./emacs/init.el")
          ("~/.emacs.d/myinit.org" . "./emacs/myinit.org"))))
