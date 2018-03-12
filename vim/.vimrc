@@ -31,6 +31,9 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'terryma/vim-expand-region'
+Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
