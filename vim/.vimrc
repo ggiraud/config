@@ -20,7 +20,6 @@ Plug 'justmao945/vim-clang'
 Plug 'benmills/vimux'
 Plug 'julienr/vim-cellmode'
 Plug 'kovisoft/slimv'
-Plug 'vim-syntastic/syntastic'
 Plug 'chrisbra/csv.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmhedberg/SimpylFold'
@@ -35,6 +34,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'terryma/vim-expand-region'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
+Plug 'w0rp/ale'
+Plug 'maximbaz/lightline-ale'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,6 +139,37 @@ endif
 set number
 colorscheme slate
 
+" fix meta-keys which generate <Esc>a .. <Esc>z
+let c='a'
+while c <= 'z'
+	exec "set <M-".toupper(c).">=\e".c
+	exec "imap \e".c." <M-".toupper(c).">"
+	let c = nr2char(1+char2nr(c))
+endw
+
+" lightline-ale
+let g:lightline = {}
+let g:lightline.component_expand = {
+			\'linter_checking': 'lightline#ale#checking',
+			\'linter_warnings': 'lightline#ale#warnings',
+			\'linter_errors': 'lightline#ale#errors',
+			\'linter_ok': 'lightline#ale#ok',
+			\}
+let g:lightline.component_type = {
+			\'linter_checking': 'left',
+			\'linter_warnings': 'warning',
+			\'linter_errors': 'error',
+			\'linter_ok': 'left',
+			\}
+let g:lightline.active = {
+			\'right': [
+			\[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+			\[ 'lineinfo' ],
+			\[ 'percent' ],
+			\[ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ],
+			\]
+			\}
+
 " Tmuxline  setup
 set laststatus=2
 let g:tmuxline_powerline_separators = 0
@@ -176,16 +208,8 @@ let g:cellmode_tmux_windowname=''
 let g:cellmode_tmux_panenumber='1'
 let g:cellmode_use_tmux=1
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+" ALE
+let g:ale_completion_enabled = 1
 
 " SimpylFold
 let g:SimpylFold_fold_import = 0
