@@ -433,10 +433,13 @@
    #+BEGIN_SRC emacs-lisp
      (use-package company-tern
        :hook (js2-mode . tern-mode)
-       :config
+       :init
        (eval-after-load "company"
          '(progn
-            (add-to-list 'company-backends 'company-tern))))
+            (add-to-list 'company-backends 'company-tern)))
+       :bind (:map tern-mode-keymap
+                   ("M-." . nil)
+                   ("M-," . nil)))
    #+END_SRC
 ** slime-company
    #+BEGIN_SRC emacs-lisp
