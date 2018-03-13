@@ -225,6 +225,9 @@
 ** ivy
    #+BEGIN_SRC emacs-lisp
      (use-package ivy
+       :init (progn
+               (setq org-goto-interface 'outline-path-completion)
+               (setq org-outline-path-complete-in-steps nil))
        :diminish (ivy-mode)
        :bind ("C-x b" . ivy-switch-buffer)
        :config
