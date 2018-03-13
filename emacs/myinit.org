@@ -213,6 +213,15 @@
    #+BEGIN_SRC emacs-lisp
      (defalias 'list-buffers 'ibuffer)
    #+END_SRC
+** hydra
+   #+BEGIN_SRC emacs-lisp
+     (use-package hydra
+       :pin melpa-stable)
+   #+END_SRC
+** smex
+   #+BEGIN_SRC emacs-lisp
+     (use-package smex)
+   #+END_SRC
 ** counsel
 	#+BEGIN_SRC emacs-lisp
       (use-package counsel
@@ -236,6 +245,11 @@
        (setq ivy-display-style 'fancy)
        ;; Enable magit completion
        (setq magit-completing-read-function 'ivy-completing-read))
+   #+END_SRC
+** ivy-hydra
+   #+BEGIN_SRC emacs-lisp
+     (use-package ivy-hydra
+       :pin melpa-stable)
    #+END_SRC
 ** swiper
    #+BEGIN_SRC emacs-lisp
