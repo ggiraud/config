@@ -744,6 +744,12 @@
      (use-package nyan-mode
        :config (nyan-mode 1))
    #+END_SRC
+** graphviz-dot-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package graphviz-dot-mode
+       :config (setf (alist-get "dot" org-src-lang-modes) 'graphviz-dot)
+       :mode "\\.dot\\'")
+   #+END_SRC
 * org-babel
   Active Babel languages
   #+BEGIN_SRC emacs-lisp
