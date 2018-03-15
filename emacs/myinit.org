@@ -719,9 +719,20 @@
      (use-package vimrc-mode
        :mode "\\.vim\\(rc\\)?\\'")
    #+END_SRC
-** plantuml
+** plantuml-mode
    #+BEGIN_SRC emacs-lisp
-     (setq org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.1/libexec/plantuml.jar")
+     (setq org-plantuml-jar-path
+           (car (file-expand-wildcards "/usr/local/Cellar/plantuml/*/libexec/plantuml.jar")))
+     (use-package plantuml-mode
+       :config (progn
+                 (setq plantuml-jar-path org-plantuml-jar-path)
+                 (add-to-list 'org-src-lang-modes '("plantuml" . plantuml)))
+       :mode "\\.plantuml\\'")
+   #+END_SRC
+** flycheck-plantuml
+   #+BEGIN_SRC emacs-lisp
+     (use-package flycheck-plantuml
+            :config (flycheck-plantuml-setup))
    #+END_SRC
 ** persp-mode
    #+BEGIN_SRC emacs-lisp
