@@ -750,6 +750,12 @@
        :config (setf (alist-get "dot" org-src-lang-modes) 'graphviz-dot)
        :mode "\\.dot\\'")
    #+END_SRC
+** COMMENT ob-dot2tex.el
+   Downloaded from github repository: [[https://github.com/choppsv1/dot.spacemacs.d/blob/master/local-lisp/ob-dot2tex.el][ob-dot2tex.el]]
+   #+BEGIN_SRC emacs-lisp
+     (use-package ob-dot2tex
+       :load-path "~/.emacs.d/local/")
+   #+END_SRC
 * org-babel
   Active Babel languages
   #+BEGIN_SRC emacs-lisp
@@ -769,7 +775,9 @@
        (mongo . t)
        (js . t)
        (dot . t)
-       (plantuml . t)))
+       (plantuml . t)
+       ;;(dot2tex . t)
+       ))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
     (setq org-export-babel-evaluate 'inline-only)
     (setq org-src-tab-acts-natively t)
