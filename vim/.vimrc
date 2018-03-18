@@ -227,6 +227,7 @@ set pastetoggle=<f5>
 set ignorecase
 set smartcase
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+let g:netrw_localrmdir='rm -r'
 
 " visual start
 " xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
