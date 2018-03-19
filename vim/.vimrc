@@ -36,6 +36,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
+Plug 'mbbill/undotree'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
