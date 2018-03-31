@@ -307,6 +307,7 @@
               (python-mode . flycheck-mode)
               (js-mode . flycheck-mode)
               (shell-script-mode . flycheck-mode)
+              (lua-mode . flycheck-mode)
               ;;(emacs-lisp-mode . flycheck-mode)
               ;;(common-lisp-mode . flycheck-mode)
               ))
@@ -775,6 +776,25 @@
        :config (eval-after-load "company"
                  '(add-to-list 'company-backends 'company-anaconda)))
 
+   #+END_SRC
+** lua-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package lua-mode
+       :pin melpa-stable
+       :mode "\\.lua\\'"
+       :interpreter ("lua" . lua-mode))
+   #+END_SRC
+** company-lua
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-lua
+       :config
+       (add-hook 'lua-mode-hook
+                 (lambda ()
+                   (add-to-list 'company-backends 'company-lua))))
+   #+END_SRC
+** love-minor-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package love-minor-mode)
    #+END_SRC
 * org-babel
   Active Babel languages
