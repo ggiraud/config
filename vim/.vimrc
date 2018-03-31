@@ -48,7 +48,9 @@ endif
 let g:deoplete#enable_at_startup = 1
 Plug 'zchee/deoplete-jedi'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-let g:deoplete#enable_at_startup = 1
+Plug 'davisdude/vim-love-docs'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
