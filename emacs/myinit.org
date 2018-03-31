@@ -817,7 +817,7 @@
        (dot . t)
        (plantuml . t)
        ;;(dot2tex . t)
-       ))
+       (latex . t)))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
     (setq org-export-babel-evaluate 'inline-only)
     (setq org-src-tab-acts-natively t)
