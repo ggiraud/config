@@ -15,6 +15,7 @@ Plug 'rking/ag.vim'
 Plug 'tpope/vim-commentary'
 "Plug 'davidhalter/jedi-vim'
 Plug 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'fatih/vim-go'
 Plug 'mattn/emmet-vim'
 Plug 'justmao945/vim-clang'
 Plug 'benmills/vimux'
