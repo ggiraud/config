@@ -195,19 +195,7 @@ let g:lisp_rainbow=1
 let g:C_UseTool_cmake = 'yes'
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=tern#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" autocmd FileType python setlocal omnifunc=python3complete#Complete
-" autocmd FileType python setlocal omnifunc=jedi#completions
-
-" Python
-" If you prefer the Omni-Completion tip window to close when a selection is
-" made, these lines close it on movement in insert mode or when leaving
-" insert mode
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+set omnifunc=syntaxcomplete#Complete
 
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
@@ -247,16 +235,6 @@ set ignorecase
 set smartcase
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 let g:netrw_localrmdir='rm -r'
-
-" visual start
-" xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
-" xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
-" function! s:VSetSearch()
-" 	let temp = @s
-" 	norm! gv"sy
-" 	let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
-" 	let @s = temp
-" endfunction
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
