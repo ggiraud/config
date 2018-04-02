@@ -51,6 +51,7 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'davisdude/vim-love-docs'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-lua-ftplugin'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
