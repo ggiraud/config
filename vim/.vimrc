@@ -252,5 +252,9 @@ autocmd FileType crontab setlocal nowritebackup
 
 " undos
 set undofile " Maintain undo history between sessions
-set undodir=~/.vim/undodir
+set undodir=~/.vim/undo//
 nnoremap <F5> :MundoToggle<CR>
+" backups
+set backupdir=~/.vim/backup//
+" swaps
+set directory=~/.vim/swp//
