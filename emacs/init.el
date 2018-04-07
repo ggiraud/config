@@ -28,7 +28,7 @@
  '(magit-log-section-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
-    (vimrc-mode undo-tree magit auctex company-auctex company-math cider color-theme try ace-window rainbow-delimiters paredit-everywhere jq-mode yaml-mode web-mode use-package slime-company shampoo paredit-menu ox-twbs ob-mongo ob-http ob-go nov nginx-mode markdown-mode jsx-mode js2-mode js-comint irony-eldoc htmlize go-eldoc gnuplot flymake-json flycheck-irony f expand-region exec-path-from-shell emmet-mode elpy docker css-eldoc company-web company-try-hard company-tern company-quickhelp company-jedi company-irony-c-headers company-irony company-go browse-kill-ring better-defaults ace-jump-mode)))
+    (yaml-mode xref-js2 which-key web-mode vimrc-mode use-package undo-tree try smex slime-company shampoo rainbow-delimiters persp-mode pdf-tools paredit-menu paredit-everywhere ox-twbs org-bullets ob-mongo ob-ipython ob-http ob-go nyan-mode nov nginx-mode neotree markdown-mode magit love-minor-mode jsx-mode js-comint ivy-hydra irony-eldoc impatient-mode graphviz-dot-mode go-eldoc gnuplot flycheck-plantuml flycheck-irony expand-region exec-path-from-shell emmet-mode elpy docker css-eldoc counsel company-web company-try-hard company-tern company-shell company-quickhelp company-math company-lua company-jedi company-irony-c-headers company-irony company-go company-auctex company-anaconda cider cdlatex browse-kill-ring ace-window ace-jump-mode)))
  '(pdf-tools-handle-upgrades nil)
  '(sentence-end-double-space nil)
  '(show-paren-mode t)
