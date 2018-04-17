@@ -218,6 +218,9 @@ let g:cellmode_use_tmux=1
 
 " ALE
 let g:ale_completion_enabled = 1
+let g:ale_fixers = {
+\	'json': ['fixjson']
+\}
 
 " SimpylFold
 let g:SimpylFold_fold_import = 0
