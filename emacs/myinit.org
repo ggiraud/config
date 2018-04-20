@@ -288,7 +288,7 @@
 ** emmet-mode
    #+BEGIN_SRC emacs-lisp
      (use-package emmet-mode
-       :hook (html-mode web-mode css-mode))
+       :hook (html-mode web-mode css-mode rjsx-mode))
    #+END_SRC
 ** COMMENT elpy
    #+BEGIN_SRC emacs-lisp
@@ -310,7 +310,12 @@
               (lua-mode . flycheck-mode)
               ;;(emacs-lisp-mode . flycheck-mode)
               ;;(common-lisp-mode . flycheck-mode)
-              ))
+              )
+       :config (progn
+                 (setq-default flycheck-disabled-checkers
+                               (append flycheck-disabled-checkers
+                                       '(javascript-jshint)))
+                 (flycheck-add-mode 'javascript-eslint 'rjsx-mode)))
    #+END_SRC
 ** slime
    #+BEGIN_SRC emacs-lisp
@@ -356,10 +361,15 @@
        :bind (:map js2-mode-map
                    ("M-." . nil)))
    #+END_SRC
-** jsx-mode
+** COMMENT jsx-mode
    #+BEGIN_SRC emacs-lisp
      (use-package jsx-mode
        :mode "\\.jsx\\'")
+   #+END_SRC
+** rjsx-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package rjsx-mode
+       :mode "\\.jsx?\\'")
    #+END_SRC
 ** paredit
    #+BEGIN_SRC emacs-lisp
