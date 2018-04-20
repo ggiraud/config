@@ -52,6 +52,8 @@ Plug 'davisdude/vim-love-docs'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,6 +203,12 @@ set omnifunc=syntaxcomplete#Complete
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
+let g:deoplete#sources#ternjs#filetypes = [
+			\ 'jsx',
+			\ 'javascript.jsx',
+			\ 'html'
+			\ ]
+autocmd FileType html set ft=html.javascript_tern
 
 " Go-Vim
 let g:go_fmt_command = "goimports"
@@ -218,13 +226,30 @@ let g:cellmode_use_tmux=1
 
 " ALE
 let g:ale_completion_enabled = 1
+let g:ale_lint_on_text_changed = 1
 let g:ale_fixers = {
-\	'json': ['fixjson']
+\	'json': ['fixjson'],
+\	'javascript': ['eslint', 'prettier-eslint'],
+\	'javascript.jsx': ['eslint', 'prettier-eslint']
 \}
 
 " SimpylFold
 let g:SimpylFold_fold_import = 0
 let g:SimpylFold_doctring_preview = 1
+
+" Vim-JSX
+let g:jsx_ext_required = 0
+
+" Emmet
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx'
+\  }
+\}
+
+" Prettier
+autocmd FileType javascript set formatprg=prettier\ --stdin
 
 " Custom Vim
 let mapleader="\\"
@@ -239,6 +264,9 @@ set ignorecase
 set smartcase
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 let g:netrw_localrmdir='rm -r'
+autocmd FileType netrw nnoremap ? :help netrw-quickmap<CR>
+set tabstop=2
+set shiftwidth=2
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -251,6 +279,7 @@ inoremap <esc> <nop>
 
 autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType json setlocal foldmethod=syntax
+autocmd FileType javascript setlocal foldmethod=syntax
 autocmd FileType crontab setlocal nowritebackup
 
 " undos
