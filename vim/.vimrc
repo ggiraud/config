@@ -253,6 +253,7 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 
 " Custom Vim
 let mapleader="\\"
+
 set relativenumber
 set path+=**
 set wildmenu

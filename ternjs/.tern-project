@@ -1,12 +1,18 @@
 {
 	"libs": [
 		"browser",
-		"jquery"
+		"jquery",
+		"react",
+		"ecma5",
+		"ecma6",
+		"ecma7"
 	],
 	"plugins": {
 		"doc_comment": null,
 		"node": {},
 		"es_modules": {},
+		"jsx": {},
 		"phaser": {}
-	}
+	},
+	"ecmaVersion": 7
 }
