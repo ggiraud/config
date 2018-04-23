@@ -241,7 +241,7 @@ let g:SimpylFold_doctring_preview = 1
 let g:jsx_ext_required = 0
 
 " Emmet
-let g:user_emmet_leader_key='<Tab>'
+"let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
 \  'javascript.jsx' : {
 \      'extends' : 'jsx'
