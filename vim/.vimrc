@@ -56,6 +56,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'lambdalisue/gina.vim'
 Plug 'jreybert/vimagit'
+Plug 'tpope/vim-obsession'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
