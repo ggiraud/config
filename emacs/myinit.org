@@ -574,7 +574,7 @@
        :config
        (global-set-key (kbd "C-c SPC") 'ace-jump-mode))
    #+END_SRC
-** yasnippet
+** COMMENT yasnippet
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
        :config
