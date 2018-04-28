@@ -55,6 +55,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'lambdalisue/gina.vim'
+Plug 'jreybert/vimagit'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
