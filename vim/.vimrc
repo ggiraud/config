@@ -57,6 +57,9 @@ Plug 'mxw/vim-jsx'
 Plug 'lambdalisue/gina.vim'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-obsession'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -158,7 +161,8 @@ if !exists(":DiffOrig")
 endif
 
 set number
-colorscheme slate
+set background=light
+colorscheme PaperColor
 
 " fix meta-keys which generate <Esc>a .. <Esc>z
 let c='a'
