@@ -777,7 +777,7 @@
      (use-package ob-dot2tex
        :load-path "~/.emacs.d/local/")
    #+END_SRC
-** anaconda-mode
+** COMMENT anaconda-mode
    #+BEGIN_SRC emacs-lisp
      (use-package anaconda-mode
        :hook ((python-mode . anaconda-mode)
