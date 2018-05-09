@@ -783,7 +783,7 @@
        :hook ((python-mode . anaconda-mode)
               (python-mode . anaconda-eldoc-mode)))
    #+END_SRC
-** company-anaconda
+** COMMENT company-anaconda
    #+BEGIN_SRC emacs-lisp
      (use-package company-anaconda
        :config (eval-after-load "company"
