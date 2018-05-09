@@ -161,7 +161,7 @@ if !exists(":DiffOrig")
 endif
 
 set number
-set background=light
+set background=dark
 colorscheme PaperColor
 
 " fix meta-keys which generate <Esc>a .. <Esc>z
