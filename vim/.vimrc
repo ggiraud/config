@@ -45,7 +45,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 1
 Plug 'zchee/deoplete-jedi'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'davisdude/vim-love-docs'
@@ -206,6 +205,15 @@ let g:C_UseTool_cmake = 'yes'
 
 " Enable omni completion.
 set omnifunc=syntaxcomplete#Complete
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
+" Deoplete-jedi
+let g:python3_host_prog = '/Users/guillaume/anaconda3/bin/python'
+let g:deoplete#sources#jedi#python_path = '/Users/guillaume/anaconda3/bin/python'
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#extra_path = ['/Users/guillaume/anaconda3/lib/python3.5/site-packages']
 
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
