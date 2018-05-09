@@ -806,6 +806,10 @@
    #+BEGIN_SRC emacs-lisp
      (use-package love-minor-mode)
    #+END_SRC
+** material-theme
+   #+BEGIN_SRC emacs-lisp
+     (use-package material-theme)
+   #+END_SRC
 * org-babel
   Active Babel languages
   #+BEGIN_SRC emacs-lisp
@@ -835,5 +839,6 @@
 * theme
   Current theme
   #+BEGIN_SRC emacs-lisp
-    (load-theme 'adwaita t)
+    ;; (load-theme 'adwaita t)
+    (load-theme 'material t)
   #+END_SRC
