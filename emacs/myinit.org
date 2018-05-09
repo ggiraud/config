@@ -290,15 +290,18 @@
      (use-package emmet-mode
        :hook (html-mode web-mode css-mode rjsx-mode))
    #+END_SRC
-** COMMENT elpy
+** elpy
    #+BEGIN_SRC emacs-lisp
      (use-package elpy
        :config
        (elpy-enable)
-       (elpy-use-cpython)
-       (setq python-shell-interpreter "python3")
-       (setq elpy-rpc-python-command "python3")
-       (setq elpy-rpc-backend "jedi"))
+       (setq python-shell-interpreter "ipython"
+           python-shell-interpreter-args "-i --simple-prompt")
+       ;; (elpy-use-cpython)
+       ;; (setq python-shell-interpreter "python3")
+       ;; (setq elpy-rpc-python-command "python3")
+       ;; (setq elpy-rpc-backend "jedi")
+       )
    #+END_SRC
 ** flycheck
    #+BEGIN_SRC emacs-lisp
