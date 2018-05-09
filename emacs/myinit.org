@@ -461,7 +461,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package company-try-hard)
    #+END_SRC
-** company-jedi
+** COMMENT company-jedi
    #+BEGIN_SRC emacs-lisp
      (use-package company-jedi
        :config
