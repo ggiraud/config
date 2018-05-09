@@ -20,12 +20,14 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(custom-safe-themes (quote (default)))
- '(mac-command-modifier nil)
- '(mac-option-modifier (quote meta))
- '(mac-right-option-modifier (quote (:function alt :mouse alt)))
+ '(custom-safe-themes
+   (quote
+    ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" default)))
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(magit-log-section-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
+ '(ns-alternate-modifier (quote meta))
+ '(ns-command-modifier nil)
+ '(ns-right-alternate-modifier nil)
  '(package-selected-packages
    (quote
     (yaml-mode xref-js2 which-key web-mode vimrc-mode use-package try smex slime-company shampoo rainbow-delimiters paredit-menu paredit-everywhere ox-twbs org-bullets ob-mongo ob-ipython ob-http ob-go nyan-mode nov nginx-mode neotree markdown-mode magit love-minor-mode jsx-mode js-comint ivy-hydra irony-eldoc impatient-mode graphviz-dot-mode go-eldoc gnuplot flycheck-plantuml flycheck-irony expand-region exec-path-from-shell emmet-mode elpy docker css-eldoc counsel company-web company-try-hard company-tern company-shell company-quickhelp company-math company-lua company-jedi company-irony-c-headers company-irony company-go company-auctex company-anaconda cider cdlatex browse-kill-ring ace-window ace-jump-mode)))
