@@ -760,7 +760,7 @@
      (use-package persp-mode
        :config (persp-mode 1))
    #+END_SRC
-** nyan-mode
+** COMMENT nyan-mode
    #+BEGIN_SRC emacs-lisp
      (use-package nyan-mode
        :config (nyan-mode 1))
