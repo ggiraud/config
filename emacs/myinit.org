@@ -813,6 +813,14 @@
    #+BEGIN_SRC emacs-lisp
      (use-package material-theme)
    #+END_SRC
+** projectile
+   #+BEGIN_SRC emacs-lisp
+     (use-package projectile)
+   #+END_SRC
+** COMMENT counsel-projectile
+   #+BEGIN_SRC emacs-lisp
+     (use-package counsel-projectile)
+   #+END_SRC
 * org-babel
   Active Babel languages
   #+BEGIN_SRC emacs-lisp
