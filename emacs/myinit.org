@@ -821,6 +821,14 @@
    #+BEGIN_SRC emacs-lisp
      (use-package counsel-projectile)
    #+END_SRC
+** flycheck-mypy
+   #+BEGIN_SRC emacs-lisp
+     (use-package flycheck-mypy
+       :config
+       (progn
+         (setq flycheck-python-mypy-executable "/Users/guillaume/anaconda3/bin/mypy")
+         (flycheck-add-next-checker 'python-flake8 'python-mypy)))
+   #+END_SRC
 * org-babel
   Active Babel languages
   #+BEGIN_SRC emacs-lisp
