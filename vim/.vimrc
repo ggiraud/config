@@ -214,7 +214,7 @@ let g:deoplete#enable_at_startup = 1
 let g:python3_host_prog = '/Users/guillaume/anaconda3/bin/python'
 let g:deoplete#sources#jedi#python_path = '/Users/guillaume/anaconda3/bin/python'
 let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources#jedi#extra_path = ['/Users/guillaume/anaconda3/lib/python3.5/site-packages']
+let g:deoplete#sources#jedi#extra_path = ['/Users/guillaume/anaconda3/lib/python3.6/site-packages']
 
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
