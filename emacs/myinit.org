@@ -312,7 +312,7 @@
               (shell-script-mode . flycheck-mode)
               (lua-mode . flycheck-mode)
               ;;(emacs-lisp-mode . flycheck-mode)
-              ;;(common-lisp-mode . flycheck-mode)
+              (common-lisp-mode . flycheck-mode)
               )
        :config (progn
                  (setq-default flycheck-disabled-checkers
