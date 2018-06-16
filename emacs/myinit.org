@@ -606,7 +606,8 @@
    #+END_SRC
 ** ob-ipython
    #+BEGIN_SRC emacs-lisp
-     (use-package ob-ipython)
+     (use-package ob-ipython
+       :config (add-to-list 'company-backends 'company-ob-ipython))
    #+END_SRC
 ** json-mode
    #+BEGIN_SRC emacs-lisp
