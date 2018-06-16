@@ -60,6 +60,8 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'shime/vim-livedown'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -266,6 +268,13 @@ let g:user_emmet_settings = {
 
 " Prettier
 autocmd FileType javascript set formatprg=prettier\ --stdin
+
+" Ultisnips
+let g:UltiSnipsSnippetDirectories=['/Users/guillaume/UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 
 " Custom Vim
 let mapleader="\\"
