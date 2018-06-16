@@ -307,7 +307,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
        :hook ((json-mode . flycheck-mode)
-              (python-mode . flycheck-mode)
+              ;; (python-mode . flycheck-mode)
               (js-mode . flycheck-mode)
               (shell-script-mode . flycheck-mode)
               (lua-mode . flycheck-mode)
