@@ -332,10 +332,11 @@
          (add-hook 'slime-mode-hook 'slime-company-maybe-enable)
          (add-hook 'slime-repl-mode-hook 'slime-company-maybe-enable)
          (setq slime-contribs '(slime-fancy))
-         ;;(eval-after-load "company"
-         ;;  '(progn
-         ;;     (slime-setup '(slime-fancy slime-company))
-         ;;     (add-to-list 'company-backends 'slime-company-backend)))
+         (eval-after-load "company"
+           '(progn
+              (slime-setup '(slime-fancy slime-company))
+              ;; (add-to-list 'company-backends 'slime-company-backend)
+              ))
          ))
    #+END_SRC
 ** js2-mode
