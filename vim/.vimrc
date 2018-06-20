@@ -64,6 +64,8 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-jdaddy'
 Plug 'Shougo/unite.vim'
 Plug 'Quramy/vison'
+Plug 'kalekundert/vim-coiled-snake'
+Plug 'Konfekt/FastFold'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
