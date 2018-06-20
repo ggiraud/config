@@ -23,7 +23,6 @@ Plug 'julienr/vim-cellmode'
 Plug 'kovisoft/slimv'
 Plug 'chrisbra/csv.vim'
 Plug 'edkolev/tmuxline.vim'
-Plug 'tmhedberg/SimpylFold'
 Plug 'ternjs/tern_for_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -253,10 +252,6 @@ let g:ale_fixers = {
 \	'javascript': ['eslint', 'prettier-eslint'],
 \	'javascript.jsx': ['eslint', 'prettier-eslint']
 \}
-
-" SimpylFold
-let g:SimpylFold_fold_import = 0
-let g:SimpylFold_doctring_preview = 1
 
 " Vim-JSX
 let g:jsx_ext_required = 0
