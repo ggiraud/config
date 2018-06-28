@@ -326,7 +326,7 @@
        :init
        (progn
          (load (expand-file-name "~/quicklisp/slime-helper.el"))
-         (setq inferior-lisp-program "/usr/local/bin/sbcl"))
+         (setq inferior-lisp-program "/usr/local/bin/sbcl --dynamic-space-size 2560"))
        :config
        (progn
          (add-hook 'slime-mode-hook 'slime-company-maybe-enable)
