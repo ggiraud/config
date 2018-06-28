@@ -66,6 +66,7 @@ Plug 'Shougo/unite.vim'
 Plug 'Quramy/vison'
 Plug 'kalekundert/vim-coiled-snake'
 Plug 'Konfekt/FastFold'
+Plug 'dyng/ctrlsf.vim'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
