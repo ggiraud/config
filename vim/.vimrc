@@ -67,6 +67,7 @@ Plug 'Quramy/vison'
 Plug 'kalekundert/vim-coiled-snake'
 Plug 'Konfekt/FastFold'
 Plug 'dyng/ctrlsf.vim'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
