@@ -835,6 +835,10 @@
    #+BEGIN_SRC emacs-lisp
      (use-package realgud)
    #+END_SRC
+** julia-mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package julia-mode)
+   #+END_SRC
 * org-babel
   Active Babel languages
   #+BEGIN_SRC emacs-lisp
