@@ -30,7 +30,7 @@
  '(ns-right-alternate-modifier nil)
  '(package-selected-packages
    (quote
-    (yaml-mode xref-js2 which-key web-mode vimrc-mode use-package try smex slime-company shampoo rainbow-delimiters paredit-menu paredit-everywhere ox-twbs org-bullets ob-mongo ob-ipython ob-http ob-go nyan-mode nov nginx-mode neotree markdown-mode magit love-minor-mode jsx-mode js-comint ivy-hydra irony-eldoc impatient-mode graphviz-dot-mode go-eldoc gnuplot flycheck-plantuml flycheck-irony expand-region exec-path-from-shell emmet-mode elpy docker css-eldoc counsel company-web company-try-hard company-tern company-shell company-quickhelp company-math company-lua company-jedi company-irony-c-headers company-irony company-go company-auctex company-anaconda cider cdlatex browse-kill-ring ace-window ace-jump-mode)))
+    (yaml-mode xref-js2 which-key web-mode vimrc-mode use-package try smex shampoo rainbow-delimiters paredit-menu paredit-everywhere ox-twbs org-bullets ob-mongo ob-ipython ob-http ob-go nyan-mode nov nginx-mode neotree markdown-mode magit love-minor-mode jsx-mode js-comint ivy-hydra irony-eldoc impatient-mode graphviz-dot-mode go-eldoc gnuplot flycheck-plantuml flycheck-irony expand-region exec-path-from-shell emmet-mode elpy docker css-eldoc counsel company-web company-try-hard company-tern company-shell company-quickhelp company-math company-lua company-jedi company-irony-c-headers company-irony company-go company-auctex company-anaconda cider cdlatex browse-kill-ring ace-window ace-jump-mode)))
  '(pdf-tools-handle-upgrades nil)
  '(safe-local-variable-values (quote ((eval progn (pp-buffer) (indent-buffer)))))
  '(sentence-end-double-space nil)
