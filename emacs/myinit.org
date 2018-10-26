@@ -328,13 +328,13 @@
                                        '(javascript-jshint)))
                  (flycheck-add-mode 'javascript-eslint 'rjsx-mode)))
    #+END_SRC
-** slime
+** COMMENT slime
    #+BEGIN_SRC emacs-lisp
      (use-package slime
        :init
        (progn
          (load (expand-file-name "~/quicklisp/slime-helper.el"))
-         (setq inferior-lisp-program "/usr/local/bin/sbcl --dynamic-space-size 2560"))
+         (setq inferior-lisp-program "/usr/local/bin/sbcl --noinform --nolinedit --dynamic-space-size 2560"))
        :config
        (progn
          (add-hook 'slime-mode-hook 'slime-company-maybe-enable)
@@ -395,17 +395,12 @@
          (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
          (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
          (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+         (add-hook 'sly-mode-hook #'enable-paredit-mode)
 
          (require 'eldoc)
          (eldoc-add-command
           'paredit-backward-delete
-          'paredit-close-round)
-
-         (add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
-         (defun override-slime-repl-bindings-with-paredit ()
-           (define-key slime-repl-mode-map
-             (read-kbd-macro paredit-backward-delete-key) nil))
-         (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)))
+          'paredit-close-round)))
    #+END_SRC
 ** paredit-menu
    #+BEGIN_SRC emacs-lisp
@@ -504,7 +499,7 @@
                    ("M-." . nil)
                    ("M-," . nil)))
    #+END_SRC
-** slime-company
+** COMMENT slime-company
    #+BEGIN_SRC emacs-lisp
      (use-package slime-company)
    #+END_SRC
@@ -846,6 +841,12 @@
 ** julia-mode
    #+BEGIN_SRC emacs-lisp
      (use-package julia-mode)
+   #+END_SRC
+** sly
+   #+BEGIN_SRC emacs-lisp
+     (use-package sly
+       :config
+       (setq inferior-lisp-program "/usr/local/bin/sbcl --noinform --nolinedit --dynamic-space-size 2560"))
    #+END_SRC
 * org-babel
   Active Babel languages
