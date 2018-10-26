@@ -158,6 +158,14 @@
        (setq auto-save-file-name-transforms
              `((".*" ,dir t))))
    #+END_SRC
+** scratch
+   #+BEGIN_SRC emacs-lisp
+     (defun create-scratch-buffer nil
+       "create a scratch buffer"
+       (interactive)
+       (switch-to-buffer (get-buffer-create "*scratch*"))
+       (lisp-interaction-mode)) 
+   #+END_SRC
 * package-archives
   #+BEGIN_SRC emacs-lisp
     (require 'package)
