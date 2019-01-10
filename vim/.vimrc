@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'easymotion/vim-easymotion'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
-Plug 'rking/ag.vim'
 Plug 'tpope/vim-commentary'
 "Plug 'davidhalter/jedi-vim'
 Plug 'nsf/gocode', {'rtp': 'vim/'}
